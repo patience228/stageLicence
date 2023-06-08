@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: Patience
+Build-Jdk: 16.0.1
+Implementation-Title: gevisco-utilisateurs
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: com.id2real
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/gevisco/gevisco-utilisateurs
+Created-By: Maven Integration for Eclipse
+

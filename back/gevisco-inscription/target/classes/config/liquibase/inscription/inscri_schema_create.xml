@@ -1,0 +1,161 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+  
+    
+    <changeSet  author="patience (generated)" id="gevisco-23-07-2021-001">
+        <createTable schemaName="${gevisco_schema_name}" tableName="inscription">
+            <column name="id_inscription" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="montant_verse" type="INTEGER">
+               
+            </column>
+            
+            <column name="reste_payer" type="INTEGER">
+             
+            </column>
+            
+             <column name="etat" type="INTEGER">
+             
+            </column>
+            
+            <column name="active" type="BOOLEAN">
+             
+            </column>
+            
+            
+            <column name="derniere_classe" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+      
+             <column name="date_inscription" type="NUMERIC">
+                
+            </column>
+            
+            <column name="niveau_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="annee_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+      
+     	 	<column name="eleve_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+      
+     		 <column name="preinscription_id" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+      
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+       <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_inscription" 
+                       constraintName="inscription_pkey" tableName="inscription"/>  
+        
+    
+    </changeSet>
+    
+     <changeSet  author="patience (generated)" id="gevisco-23-07-2021-002">
+        <createTable schemaName="${gevisco_schema_name}" tableName="scolarite">
+            <column name="id_scolarite" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="montant_scolarite" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="niveau_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="annee_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+      
+     	 	 <column name="active" type="BOOLEAN">
+             
+            </column>
+            
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+       <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_scolarite" 
+                       constraintName="scolarite_pkey" tableName="scolarite"/>  
+        
+    
+    </changeSet>
+    
+    
+    <changeSet  author="patience (generated)" id="gevisco-23-07-2021-003">
+    
+            <addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="niveau_id" 
+                                 baseTableName="inscription" constraintName="fk_inscription_niveau_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_niveau" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="niveau"/>
+                                 
+     	<addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="annee_id" 
+                                 baseTableName="inscription" constraintName="fk_inscription_annee_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_annee" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="annee_scolaire"/>
+                                 
+   		<addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="eleve_id" 
+                                 baseTableName="inscription" constraintName="fk_inscription_eleve_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_eleve" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="eleve"/>
+   
+     <addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="preinscription_id" 
+                                 baseTableName="inscription" constraintName="fk_inscription_preinscription_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_preinscription" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="preinscription"/>
+      
+  
+    <addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="niveau_id" 
+                                 baseTableName="scolarite" constraintName="fk_scolarite_niveau_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_niveau" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="niveau"/>
+      
+    <addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="annee_id" 
+                                 baseTableName="scolarite" constraintName="fk_scolarite_annee_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_annee" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="annee_scolaire"/>
+      
+    </changeSet>
+
+    
+</databaseChangeLog>

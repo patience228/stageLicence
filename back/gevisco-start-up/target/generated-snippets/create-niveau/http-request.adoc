@@ -1,0 +1,10 @@
+[source,http,options="nowrap"]
+----
+PUT /api/preinscripion/niv/save HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5NzA4MzgsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1NzB9.oaL2Iw2KqINxoB2wgTVvK_eSGB4aPkGVL7iIR-qYUGPNtm3TJZZJpB_7nkc71QqcKdfrPVc4D9OEbrY324XFcQ
+Content-Type: application/json;charset=UTF-8
+Host: localhost:8080
+Content-Length: 46
+
+{"id":null,"libelle":"sixieme","active":false}
+----

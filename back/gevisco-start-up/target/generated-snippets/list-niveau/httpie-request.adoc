@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/api/preinscripion/niv?page=0&size=10' \
+    'Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5NzE1MDQsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1NzF9.fxst4S7AQdie8oXg45YjaYNEEJ6AnKxuvjCkwRrzQsF_5fPiZdnFezSTzg8OipkKk-wpKrYbs1ikcHih0JZO5Q' \
+    'Content-Type:application/json;charset=UTF-8'
+----

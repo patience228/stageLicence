@@ -1,0 +1,240 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+  
+    
+    <changeSet  author="patience (generated)" id="gevisco-25-07-2021-001">
+        <createTable schemaName="${gevisco_schema_name}" tableName="bulletin">
+            <column name="id_bulletin" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="libelle_bulletin" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="eleve_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            
+      
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+       <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_bulletin" 
+                       constraintName="bulletin_pkey" tableName="bulletin"/>  
+        
+    
+    </changeSet>
+    
+     <changeSet  author="patience (generated)" id="gevisco-25-07-2021-002">
+        <createTable schemaName="${gevisco_schema_name}" tableName="evaluation">
+            <column name="id_evaluation" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="libelle_evaluation" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="debut_eval" type="NUMERIC">
+               
+            </column>
+            
+             <column name="fin_eval" type="NUMERIC">
+             
+            </column>
+            
+              <column name="active" type="BOOLEAN">
+             
+            </column>
+            
+             <column name="periode" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="annee_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+      
+     	 	
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+       <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_evaluation" 
+                       constraintName="evaluation_pkey" tableName="evaluation"/>  
+        
+    
+    </changeSet>
+    
+    <changeSet  author="patience (generated)" id="gevisco-25-07-2021-003">
+        <createTable schemaName="${gevisco_schema_name}" tableName="note">
+            <column name="id_note" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="notes" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="eleve_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="active" type="BOOLEAN">
+             
+            </column>
+            
+             <column name="matiere_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="evaluation_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+      
+     	 	
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+       <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_note" 
+                       constraintName="note_pkey" tableName="note"/>  
+        
+    
+    </changeSet>
+    
+    <changeSet  author="patience (generated)" id="gevisco-25-07-2021-004">
+        <createTable schemaName="${gevisco_schema_name}" tableName="detail_bulletin">
+            <column name="id_detail_bulletin" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            
+            <column name="moyenne" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            
+             <column name="note_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="bulletin_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+      
+     	 	
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+       <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_detail_bulletin" 
+                       constraintName="detail_bulletin_pkey" tableName="detail_bulletin"/>  
+        
+    
+    </changeSet>
+    
+    
+    <changeSet  author="patience (generated)" id="gevisco-25-07-2021-005">
+    
+            <addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="eleve_id" 
+                                 baseTableName="bulletin" constraintName="fk_bulletin_eleve_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_eleve" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="eleve"/>
+                                 
+     	<addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="annee_id" 
+                                 baseTableName="evaluation" constraintName="fk_evaluation_annee_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_annee" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="annee_scolaire"/>
+                                 
+   		<addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="eleve_id" 
+                                 baseTableName="note" constraintName="fk_note_eleve_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_eleve" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="eleve"/>
+   
+     <addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="matiere_id" 
+                                 baseTableName="note" constraintName="fk_note_matiere_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_matiere" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="matiere"/>
+      
+  
+    <addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="evaluation_id" 
+                                 baseTableName="note" constraintName="fk_note_evaluation_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_evaluation" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="evaluation"/>
+      
+    <addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="note_id" 
+                                 baseTableName="detail_bulletin" constraintName="fk_detail_bulletin_note_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_note" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="note"/>
+                                 
+     <addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="bulletin_id" 
+                                 baseTableName="detail_bulletin" constraintName="fk_detail_bulletin_bulletin_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_bulletin" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="bulletin"/>                             
+      
+    </changeSet>
+
+    
+</databaseChangeLog>

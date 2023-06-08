@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+[{"id":"70e53e92-96b4-4353-a963-af9e3c4e889f","libelle":"Annee scolaire 2019-2020","dateDebut":0,"dateFin":0,"active":false},{"id":"83bf4e29-3635-4724-ae82-9dbdc26b2b20","libelle":"Annee scolaire 2019-2020","dateDebut":0,"dateFin":0,"active":false},{"id":"2683a9e2-b8b2-46b5-8bd1-42b50fd05f1a","libelle":"Annee scolaire 2019-2020","dateDebut":0,"dateFin":0,"active":false},{"id":"d96068e0-68e2-4f23-b794-28ed693f104c","libelle":"Annee scolaire 2019-2020","dateDebut":0,"dateFin":0,"active":false},{"id":"bbff4bc8-efdc-4ae3-ab56-ac884774bb74","libelle":"Annee scolaire 2020-2021","dateDebut":0,"dateFin":0,"active":false},{"id":"f745b39d-3664-44bf-9e82-856eae4b61dd","libelle":"Annee scolaire 2020-2021","dateDebut":0,"dateFin":0,"active":false}]
+----

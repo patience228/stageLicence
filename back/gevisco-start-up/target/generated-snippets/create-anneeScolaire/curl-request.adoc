@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/preinscripion/an/save' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5Njg5NDQsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1Njh9.1GIgx4esXuwpfax_JI8v83_elZGdiVtVL_Dg9HNjv3893Ilon5tFefzmxsD3rEJ0mB9TFRHdbou-BV8S7p2jfQ' \
+    -d '{"id":"d96068e0-68e2-4f23-b794-28ed693f104c","libelle":"Annee scolaire 2019-2020","dateDebut":0,"dateFin":0,"active":false}'
+----

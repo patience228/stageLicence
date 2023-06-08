@@ -1,0 +1,13 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Content-Length: 568
+Content-Type: application/json;charset=UTF-8
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: *
+Access-Control-Allow-Credentials: *
+
+[{"id":"5308ed83-96c5-44e8-8bae-c5732716a16c","libelle":"sixieme","active":false},{"id":"7504163b-9fde-4b1d-87b5-fb9c8a4f7805","libelle":"sixieme","active":false},{"id":"a45b8f69-11e7-4712-918d-e5939e57b6ba","libelle":"sixieme","active":false},{"id":"c603a793-46fd-4f1c-9af9-bc6a11b965f4","libelle":"sixieme","active":false},{"id":"2a929024-9a35-4bcc-b765-5effcf06c5c3","libelle":"sixieme","active":false},{"id":"be3e2d78-1878-4aab-9067-ff61f4f85f6d","libelle":"sixieme","active":false},{"id":"077a5375-97c5-4c25-82b4-dcec052772ff","libelle":"sixieme","active":false}]
+----

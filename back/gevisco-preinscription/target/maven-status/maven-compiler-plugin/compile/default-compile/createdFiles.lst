@@ -1,0 +1,4 @@
+com\id2real\gevisco\preinscription\entities\QNiveau.class
+com\id2real\gevisco\preinscription\entities\QEleve.class
+com\id2real\gevisco\preinscription\entities\QPreinscription.class
+com\id2real\gevisco\preinscription\entities\QAnnee_scolaire.class

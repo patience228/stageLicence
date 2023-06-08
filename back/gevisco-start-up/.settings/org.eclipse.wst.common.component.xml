@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="gevisco-start-up-1.0-SNAPSHOT">
+                
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+                
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
+        <dependent-module archiveName="gevisco-web-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gevisco-web/gevisco-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gevisco-preinscription-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gevisco-preinscription/gevisco-preinscription">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="socle-core-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/socle-core/socle-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="socle-utils-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/socle-utils/socle-utils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="socle-tiers-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/socle-tiers/socle-tiers">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gevisco-inscription-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gevisco-inscription/gevisco-inscription">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gevisco-etudes-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gevisco-etudes/gevisco-etudes">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gevisco-evaluation-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gevisco-evaluation/gevisco-evaluation">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gevisco-utilisateurs-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gevisco-utilisateurs/gevisco-utilisateurs">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="socle-account-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/socle-account/socle-account">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="socle-security-jwt-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/socle-security-jwt/socle-security-jwt">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="socle-security-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/socle-security/socle-security">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                
+        <property name="context-root" value="gevisco-start-up"/>
+                
+        <property name="java-output-path" value="/gevisco-start-up/target/classes"/>
+            
+    </wb-module>
+    
+</project-modules>

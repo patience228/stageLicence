@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+GET /api/preinscripion/an?page=0&size=10 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5NzAyMTEsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1NzB9.OpWNWh8cbHENJQRk6h6CBR5pZu2Rsepva2rLNWsV3HWlfU0LN6eZemG5pg6fjt_5vH2xrzgWkuMMrzKlFHhqrA
+Content-Type: application/json;charset=UTF-8
+Host: localhost:8080
+
+----

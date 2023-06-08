@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ echo '{"id":"bbff4bc8-efdc-4ae3-ab56-ac884774bb74","libelle":"Annee scolaire 2020-2021","dateDebut":0,"dateFin":0,"active":false}' | http POST 'http://localhost:8080/api/preinscripion/an/update' \
+    'Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5Njk3MDIsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1Njl9.9UG4M3N97E-JyIQ3GscXtYzJde6t5CqWvRZAedq73-4hPLjjdg6-MWTsEXzK6oF74FxswCxGVV785pfO-P5-BA' \
+    'Content-Type:application/json;charset=UTF-8'
+----

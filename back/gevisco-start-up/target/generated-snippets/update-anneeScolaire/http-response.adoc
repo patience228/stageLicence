@@ -1,0 +1,13 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Content-Type: application/json;charset=UTF-8
+Access-Control-Allow-Origin: *
+Content-Length: 123
+Access-Control-Allow-Methods: *
+Access-Control-Allow-Credentials: *
+
+{"id":"bbff4bc8-efdc-4ae3-ab56-ac884774bb74","libelle":"Annee scolaire 2020-2021","dateDebut":0,"dateFin":0,"active":false}
+----

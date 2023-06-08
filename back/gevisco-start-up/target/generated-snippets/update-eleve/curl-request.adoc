@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/preinscripion/elv/update' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5NzI1NzksInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1NzJ9.Ci_LDVrffof10g8tb5PQypqMtgP3Ix6lliFN7mN607JPQnQMZkXZfNaCl-R5dM9MalxMttUFnmVb1ZyVYiaMyg' \
+    -d '{"id":"058c6c3f-c893-4d14-8178-5f2135bc0bf2","matricule":null,"nom":"SIABI","prenom":"patience","sexe":"masculin","adresse":"adidogome","nationalite":"Togolaise","dateNaissance":0,"lieuNaissance":"Lome","image":"","nomParent":"TOTO","prenomParent":"Abalo","adresseParent":"Lome","professionParent":"Ingenieur","telephoneParent":"0022890345678","active":false}'
+----

@@ -1,0 +1,16 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    
+    <property name="gevisco_schema_name" value="gevisco"/>
+    <property name="tiers_schema_name" value="tiers"/>
+    
+   <include file="config/liquibase/account/sec_change-log-v1.0.0.xml" relativeToChangelogFile="false"/>
+	
+	<include file="config/liquibase/core/core_change-log-v1.0.0.xml" relativeToChangelogFile="false"/>
+	
+	<include file="config/liquibase/tiers/tiers_change-log-v1.0.0.xml" relativeToChangelogFile="false"/>
+	
+	<include file="config/liquibase/gevisco/gevisco_change-log-v1.0.0.xml" relativeToChangelogFile="false" />
+
+</databaseChangeLog>
+

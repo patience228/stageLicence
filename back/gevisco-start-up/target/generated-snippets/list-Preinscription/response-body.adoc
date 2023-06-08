@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+[{"id":"889bb137-ed00-4772-b54b-e77e1009860f","frais":3500.0,"classeAnterieure":"sixieme","ecoleProvenance":"providence","datePreinscription":0,"moyenne":13.0,"niveau":{"id":"7504163b-9fde-4b1d-87b5-fb9c8a4f7805","libelle":"sixieme","active":false},"annee":{"id":"70e53e92-96b4-4353-a963-af9e3c4e889f","libelle":"Annee scolaire 2019-2020","dateDebut":0,"dateFin":0,"active":false},"eleve":{"id":"186798e5-90ab-431b-8574-068eb53b0efc","matricule":"EPL-001","nom":"kodjo","prenom":"lolo","sexe":"masculin","adresse":"adidogome","nationalite":"Togolaise","dateNaissance":0,"lieuNaissance":"Lome","image":"dfgdgdffgd","nomParent":"TOTO","prenomParent":"Abalo","adresseParent":"Lome","professionParent":"Ingenieur","telephoneParent":"0022890345678","active":false},"etat":0,"active":false,"bulletin1":null,"bulletin2":null,"bulletin3":null}]
+----

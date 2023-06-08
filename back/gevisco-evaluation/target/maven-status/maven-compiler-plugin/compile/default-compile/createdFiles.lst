@@ -1,0 +1,4 @@
+com\id2real\gevisco\evaluation\entities\QBulletin.class
+com\id2real\gevisco\evaluation\entities\QDetail_bulletin.class
+com\id2real\gevisco\evaluation\entities\QNote.class
+com\id2real\gevisco\evaluation\entities\QEvaluation.class

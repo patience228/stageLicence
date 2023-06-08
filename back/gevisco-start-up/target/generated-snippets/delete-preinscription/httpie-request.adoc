@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ http DELETE 'http://localhost:8080/api/preinscripion/pre/5b0ae757-a0f0-4520-ac9a-9d4167ec3c2f' \
+    'Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5NjgyMjQsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1Njh9.eAWcoPNt-_lVSqU8lsZgvy57Bssf6_O1fEctQxkWGJ-lWT6bONcdJ6aV0-zFu9_M-Gz8vXrdd96-CdZFq3JUxQ' \
+    'Content-Type:application/json;charset=UTF-8'
+----

@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ echo '{"id":"be3e2d78-1878-4aab-9067-ff61f4f85f6d","libelle":"sixieme","active":false}' | http POST 'http://localhost:8080/api/preinscripion/niv/update' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5NzExMDAsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1NzF9.PBpnaIj7SP_ltBr4AuiW6R__sLTwhF8J-GIfCULo7NnPEFWCP6BgfQm9Pf1QuAUwMlkgN2uELiMX2APAFhoEAw'
+----

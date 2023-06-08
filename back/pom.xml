@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.id2real</groupId>
+  <artifactId>gevisco</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Gevisco</name>
+  <description>gestion scolaire</description>
+  <parent>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-parent</artifactId>
+	<version>2.1.4.RELEASE</version>
+	<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+  
+  
+  <modules>
+  	<module>gevisco-preinscription</module>
+  	<module>gevisco-web</module>
+  	<module>gevisco-start-up</module>
+  	<module>gevisco-inscription</module>
+  	<module>gevisco-etudes</module>
+  	<module>gevisco-evaluation</module>
+  	<module>gevisco-utilisateurs</module>
+  </modules>
+  
+  <pluginRepositories>
+	<pluginRepository>
+		<id>central</id>
+		<name>Central Repository</name>
+		<url>https://repo.maven.apache.org/maven2</url>
+		<layout>default</layout>
+		<snapshots>
+		<enabled>false</enabled>
+		</snapshots>
+		<releases>
+		<updatePolicy>never</updatePolicy>
+		</releases>
+	</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+	<repository>
+	<id>central</id>
+	<name>Central Repository</name>
+	<url>https://repo.maven.apache.org/maven2</url>
+	<layout>default</layout>
+	<snapshots>
+	<enabled>false</enabled>
+	</snapshots>
+	</repository>
+	</repositories>
+	
+	
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+</project>

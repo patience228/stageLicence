@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.id2real.gevisco.GevApiDocumenationIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 116.454 s - in com.id2real.gevisco.GevApiDocumenationIntegrationTest

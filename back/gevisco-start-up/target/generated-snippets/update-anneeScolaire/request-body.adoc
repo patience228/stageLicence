@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+{"id":"bbff4bc8-efdc-4ae3-ab56-ac884774bb74","libelle":"Annee scolaire 2020-2021","dateDebut":0,"dateFin":0,"active":false}
+----

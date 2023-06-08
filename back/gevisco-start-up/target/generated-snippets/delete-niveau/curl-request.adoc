@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/preinscripion/niv/a454185d-dc09-4711-85e5-c4e949e47e04' -i -X DELETE \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5NzE5MDYsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1NzF9.p48XounsqYrhuCjgvMcF4evugA_-HHH6zc8Ze_bGoiYPpLytXzJ1M7F5CHT2a-TB_RUSqqibaTBdQFJtgeYizA' \
+    -H 'Content-Type: application/json;charset=UTF-8'
+----

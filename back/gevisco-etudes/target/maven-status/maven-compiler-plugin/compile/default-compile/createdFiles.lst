@@ -1,0 +1,7 @@
+com\id2real\gevisco\etudes\entities\QMatiere.class
+com\id2real\gevisco\etudes\entities\QTitulaire.class
+com\id2real\gevisco\etudes\entities\QClasse.class
+com\id2real\gevisco\etudes\entities\QSuivreCours.class
+com\id2real\gevisco\etudes\entities\QEnseignement.class
+com\id2real\gevisco\etudes\entities\QProfesseur.class
+com\id2real\gevisco\etudes\entities\QAffectation.class

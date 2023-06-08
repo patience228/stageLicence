@@ -1,0 +1,13 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 201 Created
+Content-Length: 360
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Content-Type: application/json;charset=UTF-8
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: *
+Access-Control-Allow-Credentials: *
+
+{"id":"aa25070e-9809-4bb5-9606-2ddc2a7ef35d","matricule":"EPL-001","nom":"kodjo","prenom":"lolo","sexe":"masculin","adresse":"adidogome","nationalite":"Togolaise","dateNaissance":0,"lieuNaissance":"Lome","image":"","nomParent":"TOTO","prenomParent":"Abalo","adresseParent":"Lome","professionParent":"Ingenieur","telephoneParent":"0022890345678","active":false}
+----

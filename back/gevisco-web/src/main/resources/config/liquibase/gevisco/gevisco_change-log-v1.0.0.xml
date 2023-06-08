@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="config/liquibase/gevisco/gevisco_change-log-v1.0.0.xml" xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    
+    <property name="gevisco_schema_name" value="gevisco"/>
+    <property name="tiers_schema_name" value="tiers"/>
+    
+    <changeSet author="patience" id="pre-schema-1.0">
+        <sqlFile encoding="utf8" endDelimiter="\nGO" path="config/liquibase/gevisco/gevisco_schema.sql"
+                 splitStatements="true" stripComments="true"/>
+    </changeSet>
+    
+    <include file="config/liquibase/gevisco/gevisco_schema_create.xml" relativeToChangelogFile="false"/>
+      
+    <include file="config/liquibase/gevisco/gevisco_schema_update.xml" relativeToChangelogFile="false"/>
+      
+    <include file="config/liquibase/gevisco/gevisco_schema_data.xml" relativeToChangelogFile="false"/>
+
+	<include file="config/liquibase/preinscription/pre_change-log-v1.0.0.xml" relativeToChangelogFile="false"/>
+	
+	<include file="config/liquibase/inscription/inscri_change-log-v1.0.0.xml" relativeToChangelogFile="false"/>
+	
+	<include file="config/liquibase/etudes/etude_change-log-v1.0.0.xml" relativeToChangelogFile="false"/>
+	
+	<include file="config/liquibase/evaluation/eval_change-log-v1.0.0.xml" relativeToChangelogFile="false"/>
+	
+	<include file="config/liquibase/users/user_change-log-v1.0.0.xml" relativeToChangelogFile="false"/>
+	
+
+</databaseChangeLog>

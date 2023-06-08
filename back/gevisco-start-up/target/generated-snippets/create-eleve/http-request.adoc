@@ -1,0 +1,10 @@
+[source,http,options="nowrap"]
+----
+PUT /api/preinscripion/elv/save HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5NzIxNjIsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1NzJ9.p60VViXfB-14STNOHnv3sLdTK3gc_cfac3XvapShf0An6nrsME5xu90YXru4DaM3jJmvZNeXQ5A0yysbdGVHQg
+Content-Length: 326
+Content-Type: application/json;charset=UTF-8
+Host: localhost:8080
+
+{"id":null,"matricule":"EPL-001","nom":"kodjo","prenom":"lolo","sexe":"masculin","adresse":"adidogome","nationalite":"Togolaise","dateNaissance":0,"lieuNaissance":"Lome","image":"","nomParent":"TOTO","prenomParent":"Abalo","adresseParent":"Lome","professionParent":"Ingenieur","telephoneParent":"0022890345678","active":false}
+----

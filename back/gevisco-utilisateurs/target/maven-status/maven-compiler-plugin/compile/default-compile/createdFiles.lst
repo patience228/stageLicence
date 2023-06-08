@@ -1,0 +1,8 @@
+com\id2real\gevisco\utilisateurs\dtos\UserDTO.class
+com\id2real\gevisco\utilisateurs\services\UserServiceInt.class
+com\id2real\gevisco\utilisateurs\utils\UtilisateursConstants.class
+com\id2real\gevisco\utilisateurs\entities\QUser.class
+com\id2real\gevisco\utilisateurs\entities\User.class
+com\id2real\gevisco\utilisateurs\ressources\UserRessource.class
+com\id2real\gevisco\utilisateurs\services\UserService.class
+com\id2real\gevisco\utilisateurs\repositories\UserRepository.class

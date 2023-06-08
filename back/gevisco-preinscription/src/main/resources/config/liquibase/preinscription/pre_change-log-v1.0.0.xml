@@ -1,0 +1,19 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="config/liquibase/preinscription/" xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    
+    <property name="gevisco_schema_name" value="gevisco"/>
+    <property name="tiers_schema_name" value="tiers"/>
+    
+    <changeSet author="patience" id="pre-schema-1.0">
+        <sqlFile encoding="utf8" endDelimiter="\nGO" path="config/liquibase/preinscription/pre_schema.sql"
+                 splitStatements="true" stripComments="true"/>
+    </changeSet>
+    
+    <include file="config/liquibase/preinscription/pre_schema_create.xml" relativeToChangelogFile="false"/>
+      
+    <include file="config/liquibase/preinscription/pre_schema_update.xml" relativeToChangelogFile="false"/>
+      
+    <include file="config/liquibase/preinscription/pre_schema_data.xml" relativeToChangelogFile="false"/>
+
+
+</databaseChangeLog>

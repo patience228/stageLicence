@@ -1,0 +1,10 @@
+[source,http,options="nowrap"]
+----
+PUT /api/preinscripion/pre/save HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5NjM1NjEsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1NjN9.tv6qfFSg_R_Akv20BNRqwyztVtJ7N1Do0QQYlcC8MlFYK0lPNxt9Lpg6RHWHP7Zpd36rSFaVs2c3n4rRPYmhQg
+Content-Type: application/json;charset=UTF-8
+Content-Length: 800
+Host: localhost:8080
+
+{"id":null,"frais":3500.0,"classeAnterieure":"sixieme","ecoleProvenance":"providence","datePreinscription":0,"moyenne":12.0,"niveau":{"id":"5308ed83-96c5-44e8-8bae-c5732716a16c","libelle":"sixieme","active":false},"annee":{"id":"70e53e92-96b4-4353-a963-af9e3c4e889f","libelle":"Annee scolaire 2019-2020","dateDebut":0,"dateFin":0,"active":false},"eleve":{"id":"186798e5-90ab-431b-8574-068eb53b0efc","matricule":"EPL-001","nom":"kodjo","prenom":"lolo","sexe":"masculin","adresse":"adidogome","nationalite":"Togolaise","dateNaissance":0,"lieuNaissance":"Lome","image":"dfgdgdffgd","nomParent":"TOTO","prenomParent":"Abalo","adresseParent":"Lome","professionParent":"Ingenieur","telephoneParent":"0022890345678","active":false},"etat":0,"active":false,"bulletin1":null,"bulletin2":null,"bulletin3":null}
+----

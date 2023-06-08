@@ -1,0 +1,69 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+  
+    
+    <changeSet  author="patience (generated)" id="gevisco-06-08-2021-001">
+        <createTable schemaName="${gevisco_schema_name}" tableName="user">
+            <column name="id_user" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+           
+            <column name="fonction" type="VARCHAR(50)">
+                <constraints nullable="false" />
+            </column>
+            
+            <column name="active" type="BOOLEAN">
+              
+            </column>
+            
+            <column name="utilisateur_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            
+      
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+       <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_user" 
+                       constraintName="user_pkey" tableName="user"/>  
+        
+    
+    </changeSet>
+    
+     
+   
+
+    
+    <changeSet  author="patience (generated)" id="gevisco-06-08-2021-002">
+    
+                                 
+   		<addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="utilisateur_id" 
+                                 baseTableName="user" constraintName="fk_user_utilisateur_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" 
+                                 referencedTableSchemaName="${securite_schema_name}" referencedTableName="sec_utilisateurs"/>
+   
+
+   
+  
+    
+    </changeSet>
+
+    
+</databaseChangeLog>

@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.id2real</groupId>
+    <artifactId>gevisco</artifactId>
+    <version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>gevisco-web</artifactId>
+	  
+	<packaging>jar</packaging>
+	  
+	<dependencies>
+	
+
+		<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>gevisco-preinscription</artifactId>
+		<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>gevisco-inscription</artifactId>
+		<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>gevisco-etudes</artifactId>
+		<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>gevisco-evaluation</artifactId>
+		<version>${project.version}</version>
+		</dependency>
+		  	
+		 <dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>gevisco-utilisateurs</artifactId>
+		<version>${project.version}</version>
+		</dependency>
+		  		
+		<dependency>
+		<groupId>${project.groupId}</groupId>
+		 <artifactId>socle-security-jwt</artifactId>		
+		 <version>${project.version}</version>
+		</dependency>
+
+		
+		<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		</dependency>
+		
+		<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		
+		<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		</dependency>
+		
+		<dependency>
+		<groupId>org.thymeleaf</groupId>
+		<artifactId>thymeleaf</artifactId>
+		<type>jar</type>
+		</dependency>
+		
+		<dependency>
+		<groupId>org.thymeleaf.extras</groupId>
+		<artifactId>thymeleaf-extras-java8time</artifactId>
+		<type>jar</type>
+		</dependency>
+		
+		<dependency>
+		<groupId>org.liquibase</groupId>
+		<artifactId>liquibase-core</artifactId>
+		</dependency>
+		
+		<dependency>
+		<groupId>org.springframework.restdocs</groupId>
+		<artifactId>spring-restdocs-mockmvc</artifactId>
+		</dependency>
+		<dependency>
+		<groupId>org.liquibase</groupId>
+		<artifactId>liquibase-maven-plugin</artifactId>
+		<version>3.4.1</version>
+		</dependency>
+		<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<dependency>
+		<groupId>org.thymeleaf</groupId>
+		<artifactId>thymeleaf-spring5</artifactId>
+		<type>jar</type>
+		</dependency>
+	</dependencies>
+  
+</project>

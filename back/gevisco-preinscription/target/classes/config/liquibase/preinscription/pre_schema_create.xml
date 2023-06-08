@@ -1,0 +1,279 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+  
+    <changeSet  author="patience (generated)" id="gevisco-16-07-2021-001">
+        <createTable schemaName="${gevisco_schema_name}" tableName="eleve">
+            <column name="id_eleve" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="matricule" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="nom_eleve" type="VARCHAR(50)">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="prenom_eleve" type="VARCHAR(50)">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="sexe" type="VARCHAR(50)">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="adresse_eleve" type="VARCHAR(50)">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="nationalite" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_naissance" type="NUMERIC">
+            	
+            </column>
+            <column name="lieu_naissance" type="VARCHAR(50)">
+            	<constraints nullable="false"/>
+            </column>
+            
+            <column name="nom_parent" type="VARCHAR(50)">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="prenoms_parent" type="VARCHAR(50)">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="profession_parent" type="VARCHAR(50)">
+            </column>
+            <column name="adresse_parent" type="VARCHAR(50)">
+            </column>
+            <column name="telephone_parent" type="VARCHAR(50)">
+            </column>
+           
+            <column name="image" type="TEXT">
+            	
+            </column>
+            
+            <column name="active" type="BOOLEAN">
+            	
+            </column>
+            
+       
+      
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+          <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_eleve" 
+                       constraintName="eleve_pkey" tableName="eleve"/> 
+        
+         </changeSet>
+
+    <changeSet  author="patience (generated)" id="gevisco-16-07-2021-002">
+        <createTable schemaName="${gevisco_schema_name}" tableName="niveau">
+            <column name="id_niveau" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="libelle_niveau" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            
+              <column name="active" type="BOOLEAN">
+            	
+            </column>
+            
+      
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+        <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_niveau" 
+                       constraintName="niveau_pkey" tableName="niveau"/> 
+        
+        
+       
+    </changeSet>
+
+    <changeSet  author="patience (generated)" id="gevisco-16-07-2021-003">
+        <createTable schemaName="${gevisco_schema_name}" tableName="annee_scolaire">
+            <column name="id_annee" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="libelle_annee" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="date_debut" type="NUMERIC">
+              
+            </column>
+            
+            <column name="date_fin" type="NUMERIC">
+              
+            </column>
+            
+              <column name="active" type="BOOLEAN">
+            	
+            </column>
+      
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+        <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_annee" 
+                       constraintName="annee_scolaire_pkey" tableName="annee_scolaire"/> 
+        
+        
+       
+    </changeSet>
+
+    
+    <changeSet  author="patience (generated)" id="gevisco-16-07-2021-004">
+        <createTable schemaName="${gevisco_schema_name}" tableName="preinscription">
+            <column name="id_preinscription" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="frais_etude_dossier" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="etat" type="INTEGER">
+               
+            </column>
+            
+            <column name="classe_anterieure" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="ecole_provenance" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            
+             <column name="moyenne_obtenue" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            
+             <column name="date_preinscription" type="NUMERIC">
+              
+            </column>
+            
+            <column name="niveau_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="annee_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+      
+     	 	<column name="eleve_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            
+              <column name="active" type="BOOLEAN">
+            	
+            </column>
+            
+            <column name="bulletin1" type="TEXT">
+            	
+            </column>
+            
+            <column name="bulletin2" type="TEXT">
+            	
+            </column>
+            
+            <column name="bulletin3" type="TEXT">
+            	
+            </column>
+      
+      
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="created_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="created_user_agent_info" type="VARCHAR(255)"/>
+            <column name="created_user_device" type="VARCHAR(255)"/>
+            <column name="created_user_zone" type="VARCHAR(255)"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_user_ip_adresse" type="VARCHAR(255)"/>
+            <column name="last_modified_user_agent_info" type="VARCHAR(255)"/>
+            <column name="last_modified_user_device" type="VARCHAR(255)"/>
+            <column name="last_modified_user_zone" type="VARCHAR(255)"/>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+        
+        </createTable>
+        
+             
+       <addPrimaryKey schemaName="${gevisco_schema_name}" columnNames="id_preinscription" 
+                       constraintName="preinscription_pkey" tableName="preinscription"/>  
+        
+    
+    </changeSet>
+    
+    
+    <changeSet  author="patience (generated)" id="gevisco-16-07-2021-005">
+    
+            <addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="niveau_id" 
+                                 baseTableName="preinscription" constraintName="fk_preinscription_niveau_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_niveau" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="niveau"/>
+                                 
+     	<addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="annee_id" 
+                                 baseTableName="preinscription" constraintName="fk_preinscription_annee_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_annee" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="annee_scolaire"/>
+                                 
+   		<addForeignKeyConstraint baseTableSchemaName="${gevisco_schema_name}" baseColumnNames="eleve_id" 
+                                 baseTableName="preinscription" constraintName="fk_preinscription_eleve_id" deferrable="false"
+                                 initiallyDeferred="false"  onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_eleve" 
+                                 referencedTableSchemaName="${gevisco_schema_name}" referencedTableName="eleve"/>
+   
+     
+  
+    </changeSet>
+
+    
+</databaseChangeLog>

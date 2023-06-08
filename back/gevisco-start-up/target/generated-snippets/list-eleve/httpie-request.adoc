@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/api/preinscripion/elv?page=0&size=10' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYXRpZW5jZSIsImNyZWF0ZWQiOjE2MzAzNDM5NzI5NDcsInJvbGVzIjpudWxsLCJpZCI6IjYyNzc0MjdlLTM5M2MtNDMyZi04NmE2LTY4ZmRhZTQ3YmVmOCIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4iLCJleHAiOjE2MzAzNDc1NzJ9._3x7wZEuftivvGhlmYot2o7o9DkGMikpodVTKzEPMboCkUf5OFcLFXk_g9pYsxsL1sfVZmBCzNv3eBU9_UvnAw'
+----

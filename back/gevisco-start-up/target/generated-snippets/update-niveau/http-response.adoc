@@ -1,0 +1,13 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Content-Type: application/json;charset=UTF-8
+Content-Length: 80
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: *
+Access-Control-Allow-Credentials: *
+
+{"id":"be3e2d78-1878-4aab-9067-ff61f4f85f6d","libelle":"sixieme","active":false}
+----

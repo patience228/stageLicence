@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+{"id":"058c6c3f-c893-4d14-8178-5f2135bc0bf2","matricule":null,"nom":"SIABI","prenom":"patience","sexe":"masculin","adresse":"adidogome","nationalite":"Togolaise","dateNaissance":0,"lieuNaissance":"Lome","image":"","nomParent":"TOTO","prenomParent":"Abalo","adresseParent":"Lome","professionParent":"Ingenieur","telephoneParent":"0022890345678","active":false}
+----

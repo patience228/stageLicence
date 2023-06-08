@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.id2real.gevisco.PreinscriptionApiDocumentationIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 30.108 s - in com.id2real.gevisco.PreinscriptionApiDocumentationIntegrationTest

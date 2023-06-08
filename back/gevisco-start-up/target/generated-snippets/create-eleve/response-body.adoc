@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+{"id":"aa25070e-9809-4bb5-9606-2ddc2a7ef35d","matricule":"EPL-001","nom":"kodjo","prenom":"lolo","sexe":"masculin","adresse":"adidogome","nationalite":"Togolaise","dateNaissance":0,"lieuNaissance":"Lome","image":"","nomParent":"TOTO","prenomParent":"Abalo","adresseParent":"Lome","professionParent":"Ingenieur","telephoneParent":"0022890345678","active":false}
+----

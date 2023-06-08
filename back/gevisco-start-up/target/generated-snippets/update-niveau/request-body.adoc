@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+{"id":"be3e2d78-1878-4aab-9067-ff61f4f85f6d","libelle":"sixieme","active":false}
+----
