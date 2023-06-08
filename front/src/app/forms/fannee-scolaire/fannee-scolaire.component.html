@@ -1,0 +1,112 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <div class="notification">
+            <h6 > Préinscription </h6>
+        </div>
+    </div>
+
+    <div class="p-col-12">
+		<div class="card">
+			<h5>Ajout de préinscription</h5>
+			<div class="p-fluid p-formgrid p-grid">
+				<div class="p-field p-col-12 p-md-6">
+					<label for="libelle">Nom</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+				<div class="p-field p-col-12 p-md-6" >
+					<label for="libelle">Classe antérieure</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+                <div class="p-field p-col-12 p-md-6" >
+					<label for="libelle">prénoms</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+                <div class="p-field p-col-12 p-md-6" >
+					<label for="libelle">Nationalité</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="libelle">Sexe</label>
+                    <br />
+                    <br />
+
+                    <div class="p-grid">
+                        <div class="p-col-12 p-md-3">
+                            <div class="p-field-radiobutton">
+                                <p-radioButton name="city" value="Chicago"  id="city1"></p-radioButton>
+                                <label for="city1">Masculin</label>
+                            </div>
+                        </div>
+                        <div class="p-col-12 p-md-3">
+                            <div class="p-field-radiobutton">
+                                <p-radioButton name="city" value="Chicago"  id="city1"></p-radioButton>
+                                <label for="city1">Féminin</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="libelle">Nom du parent</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+
+
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="libelle">Lieu de naissance</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="libelle"> Prénoms du parent</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="libelle">Date de naissance</label>
+					<p-calendar [showIcon]="true" inputId="icon"></p-calendar>
+				</div>
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="libelle">Profession du parent</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="libelle">Adresse</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="libelle">Adresse du parent</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="libelle">Ecole de provenance</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="libelle">Téléphone du parent</label>
+					<input id="libelle" type="text" pInputText>
+				</div>
+
+
+                <div class="p-field p-col-12 ">
+                    <label for="libelle">Niveau</label>
+					<p-autoComplete [(ngModel)]="selectedNiveauAdvanced"
+                     [suggestions]="filteredNiveaux" (completeMethod)="filterNiveau($event)"
+                      field="name" [dropdown]="true">
+			</p-autoComplete>
+
+                </div>
+			</div>
+            <div>
+                <button pButton pRipple type="button" label="Enregistrer" class="p-button-rounded p-mr-2 p-mb-2" ></button>
+                <button pButton pRipple type="button" label="Annuler" class="p-button-rounded p-mr-2 p-mb-2"></button>
+            </div>
+		</div>
+
+	</div>
+
+
+</div>
+
+
+

@@ -1,0 +1,211 @@
+
+<p-toast></p-toast>
+<div class="p-grid">
+    <div class="p-col-12">
+        <button pButton pRipple label="Retour" icon="pi pi-arrow-left" class="p-button-primary p-mr-2 p-mb-2" (click)="list()" >
+        </button>
+    </div>
+
+    <div class="p-col-12">
+		<div class="card">
+			<h5> Saisie de notes</h5>
+			<div class="p-fluid p-formgrid p-grid">
+
+				<div class="p-field p-col-12">
+					<label for="evaluation">Evaluation</label>
+                    <p-dropdown [options]="evaluations"
+                    placeholder="Choisir l'évaluation" [showClear]="true"
+
+                  #evaluation="ngModel"
+                  [ngClass]="(evaluation.invalid && (evaluation.dirty || evaluation.touched))&&
+                  evaluation.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                  id="evaluation"
+                  [(ngModel)]="note.evaluation" (ngModelChange)="verification()"
+                  required >
+                </p-dropdown>
+
+
+                    <small class="ng-dirty ng-invalid invalidField" *ngIf="evaluation.invalid && (evaluation.dirty || evaluation.touched)"
+                    >Ce champ est requis.</small>
+				</div>
+
+
+
+                <!--div class="p-field p-col-12">
+                    <table class="table table-bordered table-striped" id="dynamiq">
+                        <thead>
+                          <tr>
+                            <th width="45%">Matière</th>
+                            <th width="45%">Note</th>
+                            <th width="10%">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                              <td></td>
+                              <td></td>
+
+
+
+                          <td width="10%" style="text-align: center">
+                                <button pButton pRipple icon="pi pi-plus" class="p-button-rounded
+                                 p-button-info p-mr-2" (click)="addvalue()"></button>
+                          </td>
+
+
+                        </tr>
+
+                        <tr *ngFor="let value of values; let i = index">
+                           <td >
+                            <p-dropdown [options]="matieres"
+                              placeholder="Choisir la matière" [showClear]="true"
+
+
+                              [ngClass]="(name.invalid && (name.dirty || name.touched))&&
+                              name.errors?.required? 'ng-dirty ng-invalid alert':''"
+                              [(ngModel)]="value.value" #name="ngModel" name="value{{i}}"
+                              id="name"
+                              (ngModelChange)="verification()"
+                              required
+
+                             >
+                            </p-dropdown>
+
+                            <small class="ng-dirty ng-invalid invalidField" *ngIf="name.invalid && (name.dirty || name.touched)"
+                            >La matière est requise.</small>
+                          </td>
+
+                          <td>
+
+                                <p-inputNumber mode="decimal"  [min]="0" [max]="20"
+                                #name1="ngModel" name1="value{{i}}"
+                                [ngClass]="(name1.invalid && (name1.dirty || name1.touched))&&
+                                name1.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                                id="name1"
+                                [(ngModel)]="value.value1" (ngModelChange)="verification()"
+                                required >
+                                </p-inputNumber>
+
+                                <small class="ng-dirty ng-invalid invalidField" *ngIf="name1.invalid && (name1.dirty || name1.touched)"
+                                >Ce champ est requis.</small>
+
+
+
+
+                          </td>
+
+
+                          <td width="10%" style="text-align: center">
+                                <button pButton pRipple icon="pi pi-minus" class="p-button-rounded
+                                 p-button-danger p-mr-2" (click)="removevalue(i)"></button>
+                          </td>
+
+
+                        </tr>
+
+
+                        </tbody >
+
+
+                      </table>
+                    </div-->
+
+
+            <div class="p-field p-col-12">
+                <table style="margin: 1em;">
+                    <tr>
+                        <th>Matière</th>
+                        <th>Note</th>
+                    </tr>
+                    <tr >
+                        <td>
+                            <div *ngFor="let item of matiereDatabase ">
+
+
+                             <input type="text"
+                             #libelle="ngModel"
+                             [ngClass]="(libelle.invalid && (libelle.dirty || libelle.touched))&&
+                             libelle.errors?.required?.pattern? 'ng-dirty ng-invalid alert':''"
+                             pInputText
+                             id="libelle"
+                             [(ngModel)]="item.libelle" [disabled]="true"
+                             required ng-pattern="[A-Za-z]" />
+                             <br>
+                             <br>
+
+                            </div>
+                        <td>
+                            <div class="p-field p-col-12" *ngFor=" let value of values; let i = index; ">
+
+                                <p-inputNumber mode="decimal"  [min]="0" [max]="20"
+                                #notes="ngModel"
+                                [ngClass]="(notes.invalid && (notes.dirty || notes.touched))&&
+                                notes.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                                id="notes" notes="value{{i}}"
+                                [(ngModel)]="value.value" (ngModelChange)="verification()"
+                                required  >
+                                </p-inputNumber>
+                                <small class="ng-dirty ng-invalid invalidField" *ngIf="notes.invalid && (notes.dirty || notes.touched)"
+                                >Ce champ est requis.</small>
+                                <br>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+                    <!--div class="p-field p-col-12">
+                        <label for="matiere">Matière</label>
+                        <p-dropdown [options]="matieres"
+                        placeholder="Choisir la matière" [showClear]="true"
+
+                      #matiere="ngModel"
+                      [ngClass]="(matiere.invalid && (matiere.dirty || matiere.touched))&&
+                      matiere.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                      id="matiere"
+                      [(ngModel)]="note.matiere" (ngModelChange)="verification()"
+                      required >
+                    </p-dropdown>
+
+
+                        <small class="ng-dirty ng-invalid invalidField" *ngIf="matiere.invalid && (matiere.dirty || matiere.touched)"
+                        >Ce champ est requis.</small>
+                    </div>
+
+                    <div class="p-field p-col-12">
+                        <label for="matiere">Note</label>
+                        <p-inputNumber mode="decimal"  [min]="0" [max]="20"
+                        #notes="ngModel"
+                        [ngClass]="(notes.invalid && (notes.dirty || notes.touched))&&
+                        notes.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                        id="notes"
+                        [(ngModel)]="note.notes" (ngModelChange)="verification()"
+                        required  >
+                        </p-inputNumber>
+                        <small class="ng-dirty ng-invalid invalidField" *ngIf="notes.invalid && (notes.dirty || notes.touched)"
+                        >Ce champ est requis.</small>
+                    </div-->
+
+        <br>
+        <br>
+        <br>
+			</div>
+            <div>
+                <button pButton pRipple type="button" label="Enregistrer" class="p-button-rounded p-mr-2 p-mb-2" [disabled]="disable" (click)="saveNote()"></button>
+                <button pButton pRipple type="reset" label="Annuler" class="p-button-rounded p-mr-2 p-mb-2"></button>
+            </div>
+		</div>
+
+	</div>
+
+
+</div>
+
+
+

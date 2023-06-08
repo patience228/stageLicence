@@ -1,0 +1,21 @@
+{
+	"About Us": "À propos de nous",
+	"Account": "Compte",
+	"Cancel": "Annuler",
+	"Change Password": "Changer le mot de passe",
+	"Email": "Email",
+	"Forgot Password": "Mot de passe oublié",
+	"Password": "Mot de passe",
+	"Reset Password": "Réinitialiser le mot de passe",
+	"Save": "sauvegarder",
+	"error logging in ": "Erreur de connexion",
+	"error reset: ": "réinitialisation d'erreur:",
+	"error sign up:": "inscription d'erreur:",
+	"error2!!!": "erreur2 !!!",
+	"logged in successfully": "Connecté avec succès",
+	"logged out successfully": "Déconnecté avec succès",
+	"password not matched, Please try again": "mot de passe non correspondant, veuillez réessayer",
+	"songs": "Chansons",
+	"updated successfully": "Mis à jour avec succés",
+    "année":"année"
+}

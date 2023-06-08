@@ -1,0 +1,233 @@
+<p-toast></p-toast>
+
+<div class="p-col-12">
+    <div class="card">
+        <button pButton pRipple label="Retour" icon="pi pi-arrow-left" class="p-button-primary p-mr-2 p-mb-2" (click)="list()" >
+        </button>
+        <p-table  *ngIf="eleve"  [value]="evaluations" dataKey="annee" styleClass="p-datatable-customers rowexpand-table">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem"></th>
+                    <th  pSortableColumn="">Période <p-sortIcon field="periode"></p-sortIcon></th>
+
+                    <th pSortableColumn="">Evaluation <p-sortIcon field="libelle"></p-sortIcon></th>
+                    <th pSortableColumn="">Année scolaire <p-sortIcon field="annee"></p-sortIcon></th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-evaluation let-expanded="expanded">
+                <tr>
+                    <td>
+                        <button type="button" pButton pRipple [pRowToggler]="evaluation" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    </td>
+
+                    <td>{{evaluation.periode}}</td>
+                    <td >{{evaluation.libelle}}</td>
+                    <td >{{evaluation.annee.libelle}}</td>
+
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-evaluation>
+                <tr >
+                    <td colspan="3">
+                        <div class="p-p-3">
+                            <p-table [value]="notes" dataKey="matiere">
+                                <ng-template pTemplate="header">
+
+                <tr>
+                    <th pSortableColumn="">Matière <p-sortIcon field="matiere"></p-sortIcon></th>
+                    <th pSortableColumn="">Note <p-sortIcon field="notes"></p-sortIcon></th>
+                    <th pSortableColumn="">Actions </th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-note>
+                <tr *ngIf=" evaluation.id==note.evaluation.id && eleve.id==note.eleve.id">
+                    <td >{{note.matiere.libelle}}</td>
+                    <td  >{{note.notes}}</td>
+                    <td><button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+                        (click)="editNote(note)"></button></td>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="6">Pas de notes trouvées</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    </td>
+    </tr>
+    </ng-template>
+    </p-table>
+
+</div>
+</div>
+
+
+
+<p-dialog [(visible)]="noteDialog" [style]="{width: '450px'}" header="Les informations de la classe" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field p-col-12">
+            <label for="evaluation">Evaluation</label>
+            <p-dropdown [options]="evaluations1"
+            placeholder="Choisir l'évaluation" [showClear]="true"
+
+          #evaluation="ngModel"
+          [ngClass]="(evaluation.invalid && (evaluation.dirty || evaluation.touched))&&
+          evaluation.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+          id="evaluation"
+          [(ngModel)]="note.evaluation" (ngModelChange)="verification()"
+          required   [disabled]="true">
+        </p-dropdown>
+
+
+            <small class="ng-dirty ng-invalid invalidField" *ngIf="evaluation.invalid && (evaluation.dirty || evaluation.touched)"
+            >Ce champ est requis.</small>
+        </div>
+
+
+
+            <div class="p-field p-col-12">
+                <label for="matiere">Matière</label>
+                <p-dropdown [options]="matieres"
+                placeholder="Choisir la matière" [showClear]="true"
+
+              #matiere="ngModel"
+              [ngClass]="(matiere.invalid && (matiere.dirty || matiere.touched))&&
+              matiere.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+              id="matiere"
+              [(ngModel)]="note.matiere" (ngModelChange)="verification()"
+              required >
+            </p-dropdown>
+
+
+                <small class="ng-dirty ng-invalid invalidField" *ngIf="matiere.invalid && (matiere.dirty || matiere.touched)"
+                >Ce champ est requis.</small>
+            </div>
+
+            <div class="p-field p-col-12">
+                <label for="matiere">Note</label>
+                <p-inputNumber mode="decimal"  [min]="0" [max]="20"
+                #notes="ngModel"
+                [ngClass]="(notes.invalid && (notes.dirty || notes.touched))&&
+                notes.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                id="notes"
+                [(ngModel)]="note.notes" (ngModelChange)="verification()"
+                required  >
+                </p-inputNumber>
+                <small class="ng-dirty ng-invalid invalidField" *ngIf="notes.invalid && (notes.dirty || notes.touched)"
+                >Ce champ est requis.</small>
+            </div>
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Enregistrer" icon="pi pi-check" class="p-button-text" [disabled]="disable" (click)="saveNote()"></button>
+    </ng-template>
+</p-dialog>
+
+
+<div class="p-col-12">
+	<div class="card">
+        <button pButton pRipple label="Retour" icon="pi pi-arrow-left" class="p-button-primary p-mr-2 p-mb-2" (click)="list()" >
+        </button>
+		<p-table *ngIf="eleve" [value]="notes" sortField="evaluation.id" sortMode="single" (onSort)="onSort()"  [scrollable]="true" scrollHeight="600px"
+				 styleClass="p-datatable-customers">
+			<ng-template pTemplate="header">
+				<tr>
+
+					<th>Matière</th>
+					<th>Note</th>
+					<th>Actions</th>
+
+				</tr>
+			</ng-template>
+			<ng-template pTemplate="body" let-note let-rowIndex="rowIndex">
+				<tr *ngIf="rowGroupMetadata[note.evaluation.id].index === rowIndex">
+					<td colspan="3">
+
+						<span class="p-text-bold p-ml-2">{{note.evaluation.libelle}}</span>
+						<span class="p-text-bold p-ml-2">{{note.evaluation.periode}}</span>
+                        <span class="p-text-bold p-ml-2">{{note.evaluation.annee.libelle}}</span>
+					</td>
+				</tr>
+				<tr *ngIf="eleve.id==note.eleve.id">
+					<td>
+						{{note.matiere.libelle}}
+					</td>
+
+					<td>
+						{{note.notes}}
+					</td>
+                    <td>
+						<button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+                        (click)="editNote(note)"></button>
+					</td>
+
+
+				</tr>
+			</ng-template>
+		</p-table>
+	</div>
+</div>
+
+<div class="p-col-12">
+    <div class="card">
+        <h4>TreeTable</h4>
+        <p-treeTable [value]="notes" [columns]="cols" selectionMode="checkbox" >
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th >
+                        <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                    </th>
+                    <th >
+                        Evaluation 
+                    </th>
+                  
+                    <th >
+                        Période
+                    </th>
+                    <th >
+                        Année scolaire
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+                <tr let note>
+                    <td >
+                        <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                      
+                    </td>
+                    
+                    <td >
+                        {{note.evaluation.libelle}} 
+            
+                    </td>
+
+                    <td >
+                        {{note.evaluation.periode}}
+                     
+                    </td>
+
+                    <td >
+                        {{note.evaluation.annee.libelle}}
+                     
+                    </td>
+                    
+
+                </tr>
+            </ng-template>
+        </p-treeTable>
+    </div>
+</div>
+
+
+

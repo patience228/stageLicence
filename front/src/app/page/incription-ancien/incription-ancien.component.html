@@ -1,0 +1,422 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Inscription</h1>
+                    </div><!-- /.col -->
+                    <div class="p-col-12 col-sm-6">
+                        <div class="float-sm-right  p-text-right">
+                            <h5 class="breadcrumb-item >"><a href="">Accueil</a>  /Inscription</h5>
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+
+
+    </div>
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+
+                <ng-template pTemplate="left">
+
+                    <button pButton pRipple label="Activer" icon="pi pi-check" class="p-button-help p-mb-2" (click)="activation()" [disabled]="!selectedEleves || !selectedEleves.length"></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Importer" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
+                    <button pButton pRipple label="Exporter" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+                </ng-template>
+            </p-toolbar>
+
+
+			<p-table #dt [value]="eleves" [(selection)]="selectedEleves" dataKey="id"
+
+            currentPageReportTemplate="Vue du {first} au {last} sur {totalRecords} élèves" [showCurrentPageReport]="true"
+            styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+					 [filterDelay]="0" [globalFilterFields]="['matricule','nom','prenom','sexe','adresse','nationalite','dateNaissance','lieuNaissance']">
+				<ng-template pTemplate="caption">
+					<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+						Liste des élèves
+						<span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+						   placeholder="Recherche globale ..."/>
+                </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="width: 3rem">
+							<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+						</th>
+                        <th pSortableColumn="matricule">
+                            <div class="p-d-flex p-ai-center">
+
+                           Matricule
+                            <p-sortIcon field="matricule"></p-sortIcon>
+                            <p-columnFilter type="text" field="matricule" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="nom">
+                            <div class="p-d-flex p-ai-center">
+
+                           Nom
+                            <p-sortIcon field="nom"></p-sortIcon>
+                            <p-columnFilter type="text" field="nom" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="prenom">
+                            <div class="p-d-flex p-ai-center">
+
+                           Prénoms
+                            <p-sortIcon field="prenom"></p-sortIcon>
+                            <p-columnFilter type="text" field="prenom" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="sexe">
+                            <div class="p-d-flex p-ai-center">
+
+                           Sexe
+                            <p-sortIcon field="sexe"></p-sortIcon>
+                            <p-columnFilter type="text" field="sexe" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="dateNaissance">
+                            <div class="p-d-flex p-ai-center">
+
+                           Date de naissance
+                            <p-sortIcon field="dateNaissance"></p-sortIcon>
+                            <p-columnFilter type="text" field="dateNaissance " display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="lieuNaissance">
+                            <div class="p-d-flex p-ai-center">
+
+                           Lieu de naissance
+                            <p-sortIcon field="lieuNaissance"></p-sortIcon>
+                            <p-columnFilter type="text" field="lieuNaissance" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="nationalite">
+                            <div class="p-d-flex p-ai-center">
+
+                           Nationalité
+                            <p-sortIcon field="nationalite"></p-sortIcon>
+                            <p-columnFilter type="text" field="nationalite" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="adresse">
+                            <div class="p-d-flex p-ai-center">
+
+                           Adresse
+                            <p-sortIcon field="adresse"></p-sortIcon>
+                            <p-columnFilter type="text" field="adresse" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+
+						<th style="width: 8rem">Actions</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-eleve>
+					<tr class="p-selectable-row">
+						<td>
+							<p-tableCheckbox [value]="eleve"></p-tableCheckbox>
+						</td>
+                        <td>
+                            {{eleve.matricule}}
+                        </td>
+                        <td>
+                            {{eleve.nom}}
+                        </td>
+                        <td>
+                            {{eleve.prenom}}
+                        </td>
+                        <td>
+                            {{eleve.sexe}}
+                        </td>
+                        <td>
+                            {{eleve.dateNaissance | date:'dd/MM/yyyy'}}
+                        </td>
+                        <td>
+                            {{eleve.lieuNaissance}}
+                        </td>
+                        <td>
+                            {{eleve.nationalite}}
+                        </td>
+                        <td>
+                            {{eleve.adresse}}
+                        </td>
+
+
+
+
+                        <td>
+                            <button pButton pRipple label="Inscription" class="p-button-rounded p-button-success p-mr-2" (click)="editEleve(eleve)" [disabled]="eleve.active" ></button>
+
+                        </td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr >
+						<td  colspan="10" style="text-align: center;">Pas d'élèves trouvés.</td>
+					</tr>
+				</ng-template>
+			</p-table>
+        </div>
+
+        <p-dialog [(visible)]="eleveDialog" [style]="{width: '500px'}" header="Les informations de l'élève" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                <div class="p-grid">
+                    <div class="p-col-12">
+                        <div class="card">
+
+
+
+                            <div class="p-fluid p-formgrid p-grid">
+
+                                <div class="p-field p-col-12 ">
+                                <label for="nom">Nom</label>
+                                <input  type="text"
+                                #nom="ngModel"
+                                [ngClass]="(nom.invalid && (nom.dirty || nom.touched))&&
+                                nom.errors?.required? 'ng-dirty ng-invalid alert':''"
+                                pInputText
+                                id="nom"
+                                [(ngModel)]="eleve.nom" (ngModelChange)="verification()"
+                                required  [disabled]="true" />
+
+                                <small class="ng-dirty ng-invalid invalidField" *ngIf="nom.invalid && (nom.dirty || nom.touched)"
+                                >Le nom est requis.</small>
+                            </div>
+
+
+
+                            <div class="p-field p-col-12 " >
+                                <label for="prenom">prénoms</label>
+                                <input  type="text"
+                                #prenom="ngModel"
+                                [ngClass]="(prenom.invalid && (prenom.dirty || prenom.touched))&&
+                                prenom.errors?.required? 'ng-dirty ng-invalid alert':''"
+                                pInputText
+                                id="prenom"
+                                [(ngModel)]="eleve.prenom" (ngModelChange)="verification()"
+                                required [disabled]="true"  />
+
+                                <small class="ng-dirty ng-invalid invalidField" *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)"
+                                >Le prénom est requis.</small>
+                            </div>
+
+
+                            <div class="p-field p-col-12 " >
+                                <label for="prenom">Dernière Classe</label>
+                                <input  type="text"
+                                #classe="ngModel"
+                                [ngClass]="(classe.invalid && (classe.dirty || classe.touched))&&
+                                classe.errors?.required? 'ng-dirty ng-invalid alert':''"
+                                pInputText
+                                id="classe" [disabled]="true"
+                                [(ngModel)]="affectation.classe.libelle"
+                                required [disabled]="true"  />
+
+                                <small class="ng-dirty ng-invalid invalidField" *ngIf="classe.invalid && (classe.dirty || classe.touched)"
+                                >Le prénom est requis.</small>
+                            </div>
+
+                            <!--div class="p-field p-col-12 ">
+                                <label for="eleve">Elève</label>
+                                <p-autoComplete [options]="elevess"
+                                placeholder="Choisir l'élève" [showClear]="true"
+
+                            #eleve="ngModel"
+                            [ngClass]="(eleve.invalid && (eleve.dirty || eleve.touched))&&
+                            eleve.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                            id="eleve"
+                            [(ngModel)]="inscription.eleve" (ngModelChange)="verification()"
+                            required >
+                                </p-autoComplete>
+
+
+                                <small class="ng-dirty ng-invalid invalidField" *ngIf="eleve.invalid && (eleve.dirty || eleve.touched)"
+                                >Ce champ est requis.</small>
+                            </div>
+
+
+
+                            <div class="p-field p-col-12 ">
+                                <label for="derniereClasse">Dernière classe</label>
+                                <p-dropdown [options]="classes"
+                                placeholder="Choisir la classe" [showClear]="true"
+                                appendTo='body'
+                            #derniereClasse="ngModel"
+                            [ngClass]="(derniereClasse.invalid && (derniereClasse.dirty || derniereClasse.touched))&&
+                            derniereClasse.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                            id="derniereClasse"
+                            [(ngModel)]="affectation.classe.libelle" (ngModelChange)="verification()"
+                            required >
+                            </p-dropdown>
+
+
+                                <small class="ng-dirty ng-invalid invalidField" *ngIf="derniereClasse.invalid && (derniereClasse.dirty || derniereClasse.touched)"
+                                >Ce champ est requis.</small>
+                            </div-->
+
+
+
+                            <div class="p-field p-col-12 p-md-6">
+                                <label for="niveau">Niveau</label>
+                                <p-dropdown [options]="niveaux"
+                                placeholder="Choisir le niveau" [showClear]="true"
+
+                                appendTo='body'
+
+                            #niveau="ngModel"
+                            [ngClass]="(niveau.invalid && (niveau.dirty || niveau.touched))&&
+                            niveau.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                            id="niveau"
+                            [(ngModel)]="inscription.niveau" (ngModelChange)="verification()"
+                            required >
+                            </p-dropdown>
+
+
+                                <small class="ng-dirty ng-invalid invalidField" *ngIf="niveau.invalid && (niveau.dirty || niveau.touched)"
+                                >Le niveau est requis.</small>
+                            </div>
+
+                            <div class="p-field p-col-12 p-md-6">
+                                    <label for="annee">Année scolaire</label>
+                                    <p-dropdown [options]="an"
+                                    placeholder="Choisir l'année" [showClear]="true"
+
+                                    appendTo='body'
+                                #annee="ngModel"
+                                [ngClass]="(annee.invalid && (annee.dirty || annee.touched))&&
+                                annee.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                                id="annee"
+                                [(ngModel)]="inscription.annee" (ngModelChange)="verification()"
+                                required >
+                                </p-dropdown>
+
+
+                                    <small class="ng-dirty ng-invalid invalidField" *ngIf="annee.invalid && (annee.dirty || annee.touched)"
+                                    >L'année est requise.</small>
+                            </div>
+
+
+                            <div class="p-grid">
+                                <div class="p-col-12">
+                                    <div class="card">
+
+                                        <div class="p-fluid p-formgrid p-grid">
+
+                                            <div class="p-field p-col-12 ">
+
+
+                                            <p-table  [value]="scolarites"  >
+
+
+
+                                            <ng-template pTemplate="header">
+                                                <tr>
+
+
+
+                                                    <th >
+                                                        <div class="p-d-flex p-ai-center">
+
+                                                    Niveau
+
+                                                        </div>
+                                                    </th>
+
+
+                                                    <th >
+                                                        <div class="p-d-flex p-ai-center">
+
+                                                    Scolarité
+
+                                                        </div>
+                                                    </th>
+
+                                                </ng-template>
+                                                <ng-template pTemplate="body" let-scolarite>
+                                                    <tr >
+
+                                                        <td>
+                                                            {{scolarite.niveau.libelle}}
+                                                        </td>
+                                                        <td >
+                                                            {{scolarite.montantScolarite}}
+                                                        </td>
+
+
+
+                                                    </tr>
+                                                </ng-template>
+
+                                            </p-table>
+
+
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 ">
+                                            <label for="montantVerse">Scolarité (Totalité/Moitié)</label>
+                                            <p-inputNumber mode="decimal"  [min]="0"
+                                            #montantVerse="ngModel"
+                                            [ngClass]="(montantVerse.invalid && (montantVerse.dirty || montantVerse.touched))&&
+                                            montantVerse.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                                            id="montantScolarite"
+                                            [(ngModel)]="inscription.montantVerse" (ngModelChange)="verification()"
+                                            required>
+                                            </p-inputNumber>
+                                            <small class="ng-dirty ng-invalid invalidField" *ngIf="montantVerse.invalid && (montantVerse.dirty || montantVerse.touched)"
+                                            >La Scolarité est requise.</small>
+                                        </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                 </div>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Enregistrer" icon="pi pi-check" class="p-button-text" [disabled]="disable" (click)="saveInscription()"></button>
+            </ng-template>
+        </p-dialog>
+
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

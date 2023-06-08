@@ -1,0 +1,518 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Enseignement</h1>
+                    </div><!-- /.col -->
+                    <div class="p-col-12 col-sm-6">
+                        <div class="float-sm-right  p-text-right">
+                            <h5 class="breadcrumb-item >"><a href="">Accueil</a>  /Enseignement</h5>
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+
+
+    </div>
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Importer" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
+                    <button pButton pRipple label="Exporter" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+                </ng-template>
+            </p-toolbar>
+
+
+
+
+			<p-table #dt [value]="professeurss"  dataKey="id"
+
+            currentPageReportTemplate="Vue du {first} au {last} sur {totalRecords} professeurs" [showCurrentPageReport]="true"
+            styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+					 [filterDelay]="0" [globalFilterFields]="['nom','prenom','sexe']">
+				<ng-template pTemplate="caption">
+					<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+						Liste des professeurs
+						<span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+						   placeholder="Recherche globale ..."/>
+                </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="width: 3rem">
+							<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+						</th>
+                        <th pSortableColumn="nom">
+                            <div class="p-d-flex p-ai-center">
+
+                            Nom du professeur
+                            <p-sortIcon field="nom"></p-sortIcon>
+                            <p-columnFilter type="text" field="nom" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="prenom">
+                            <div class="p-d-flex p-ai-center">
+
+                                Prénoms du professeur
+                            <p-sortIcon field="prenom"></p-sortIcon>
+                            <p-columnFilter type="text" field="prenom" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="sexe">
+                            <div class="p-d-flex p-ai-center">
+
+                           Sexe
+                            <p-sortIcon field="sexe"></p-sortIcon>
+                            <p-columnFilter type="text" field="sexe" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+
+
+
+						<th style="width: 8rem">Actions</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-professeur>
+					<tr class="p-selectable-row">
+						<td>
+							<p-tableCheckbox [value]="professeur"></p-tableCheckbox>
+						</td>
+                        <td>
+                            {{professeur.nom}}
+                        </td>
+                        <td>
+                            {{professeur.prenom}}
+                        </td>
+                        <td>
+                            {{professeur.sexe}}
+                        </td>
+
+
+                        <td>
+                            <button pButton pRipple label="Matières" class="p-button-rounded p-button-success p-mr-2" (click)="editMatiere(professeur)"></button>
+                           <!--button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteEnseignement(enseignement)"></button-->
+                        </td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr >
+						<td  colspan="5" style="text-align: center;"> Professeurs non trouvés.</td>
+					</tr>
+				</ng-template>
+			</p-table>
+        </div>
+
+        <p-dialog [(visible)]="enseignementDialog" [style]="{width: '600px'}" header="Les informations de l'enseignement" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+
+
+                    <div class="p-field">
+                        <label for="professeur">Professeur</label>
+                        <p-dropdown [options]="professeurs"
+                        placeholder="Choisir le professeur" [showClear]="true"
+
+                      #professeur="ngModel"
+                      [ngClass]="(professeur.invalid && (professeur.dirty || professeur.touched))&&
+                      professeur.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                      id="professeur"
+                      [(ngModel)]="enseignement.professeur" (ngModelChange)="verification()"
+                      required autofocus>
+			        </p-dropdown>
+
+
+                        <small class="ng-dirty ng-invalid invalidField" *ngIf="professeur.invalid && (professeur.dirty || professeur.touched)"
+                        >Ce champ est requis.</small>
+                    </div>
+                    <!--
+                <div class="row mb-2" *ngFor="let value of values; let i = index">
+                    <div class="p-field p-col-12 p-md-4">
+                        <label for="matiere">Matière</label>
+                        <p-dropdown [options]="matieres"
+                        placeholder="Choisir la matière" [showClear]="true"
+
+                      #matiere="ngModel"
+                      [ngClass]="(matiere.invalid && (matiere.dirty || matiere.touched))&&
+                      matiere.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                      id="matiere"
+                      [(ngModel)]="enseignement.matiere" (ngModelChange)="verification()"
+                      required autofocus>
+			        </p-dropdown>
+
+
+                        <small class="ng-dirty ng-invalid invalidField" *ngIf="matiere.invalid && (matiere.dirty || matiere.touched)"
+                        >La matière est requise.</small>
+                    </div>
+
+
+                    <div class="p-field p-col-12 p-md-4">
+                        <label for="classe">Classe</label>
+                        <p-dropdown [options]="classes"
+                        placeholder="Choisir la classe" [showClear]="true"
+
+                      #classe="ngModel"
+                      [ngClass]="(classe.invalid && (classe.dirty || classe.touched))&&
+                      classe.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                      id="classe"
+                      [(ngModel)]="enseignement.classe" (ngModelChange)="verification()"
+                      required autofocus>
+			        </p-dropdown>
+
+
+                        <small class="ng-dirty ng-invalid invalidField" *ngIf="classe.invalid && (classe.dirty || classe.touched)"
+                        >La classe est requise.</small>
+
+
+
+                    </div>
+                    <button pButton pRipple icon="pi pi-minus" class="p-button-rounded p-button-danger " (click)="removevalue(i)" ></button>
+
+
+                </div>
+
+                <div class="p-field p-col-12 p-md-4 p-text-right ">
+                    <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-info " (click)="addvalue()" ></button>
+                </div>
+
+            -->
+
+
+
+
+
+                <div class="p-field">
+                    <table class="table table-bordered table-striped" id="dynamiq">
+                        <thead>
+                          <tr>
+                            <th width="45%">Matière</th>
+                            <th width="45%">Classe</th>
+                            <th width="10%">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+
+
+
+                          <td width="10%" style="text-align: center">
+                                <button pButton pRipple icon="pi pi-plus" class="p-button-rounded
+                                 p-button-info p-mr-2" (click)="addvalue()"></button>
+                          </td>
+
+
+                        </tr>
+
+                        <tr *ngFor="let value of values; let i = index">
+                           <td >
+                            <p-dropdown [options]="matieres"
+                              placeholder="Choisir la matière" [showClear]="true"
+
+
+                              [ngClass]="(name.invalid && (name.dirty || name.touched))&&
+                              name.errors?.required? 'ng-dirty ng-invalid alert':''"
+                              [(ngModel)]="value.value" #name="ngModel" name="value{{i}}"
+                              id="name"
+                              (ngModelChange)="verification()"
+                              required
+
+                             >
+                            </p-dropdown>
+
+                            <small class="ng-dirty ng-invalid invalidField" *ngIf="name.invalid && (name.dirty || name.touched)"
+                            >La matière est requise.</small>
+                          </td>
+
+                          <td>
+
+                            <p-multiSelect inputId="multiselect" [options]="classes"
+                            optionLabel="label" defaultLabel="Choisir la ou les classe(s)" [filter]="false"
+                            #name1="ngModel" name1="value{{i}}"
+                            [ngClass]="(name1.invalid && (name1.dirty || name1.touched))&&
+                            name1.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                            id="name1"
+                            [(ngModel)]="value.value1" (ngModelChange)="verification()"
+                            required
+                            ></p-multiSelect>
+
+                            <small class="ng-dirty ng-invalid invalidField" *ngIf="name1.invalid && (name1.dirty || name1.touched)"
+                            >La classe est requise.</small>
+                          </td>
+
+
+                          <td width="10%" style="text-align: center">
+                                <button pButton pRipple icon="pi pi-minus" class="p-button-rounded
+                                 p-button-danger p-mr-2" (click)="removevalue(i)"></button>
+                          </td>
+
+
+                        </tr>
+
+
+                        </tbody >
+
+
+                      </table>
+                    </div>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Enregistrer" icon="pi pi-check" class="p-button-text" [disabled]="disable" (click)="saveEnseignement()"></button>
+            </ng-template>
+
+
+        </p-dialog>
+
+
+
+        <p-dialog [(visible)]="matiereDialog" [style]="{width: '800px'}" header="Les matières enseignées" [modal]="true" styleClass="p-fluid">
+
+
+            <p-table #dt [value]="matieress"  dataKey="id"
+
+            currentPageReportTemplate="Vue du {first} au {last} sur {totalRecords} matières" [showCurrentPageReport]="true"
+            styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+					 [filterDelay]="0" [globalFilterFields]="['libelle','coefficient','type']">
+				<ng-template pTemplate="caption">
+					<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+						Liste des matières
+						<span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+						   placeholder="Recherche globale ..."/>
+                </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="width: 3rem">
+							<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+						</th>
+                        <th pSortableColumn="libelle">
+                            <div class="p-d-flex p-ai-center">
+
+                            Nom de la matière
+                            <p-sortIcon field="libelle"></p-sortIcon>
+                            <p-columnFilter type="text" field="libelle" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="coefficient">
+                            <div class="p-d-flex p-ai-center">
+
+                               Coefficient
+                            <p-sortIcon field="coefficient"></p-sortIcon>
+                            <p-columnFilter type="text" field="coefficient" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="type">
+                            <div class="p-d-flex p-ai-center">
+
+                           Type
+                            <p-sortIcon field="type"></p-sortIcon>
+                            <p-columnFilter type="text" field="type" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+
+
+
+						<th style="width: 8rem">Actions</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-matiere>
+					<tr class="p-selectable-row">
+						<td>
+							<p-tableCheckbox [value]="matiere"></p-tableCheckbox>
+						</td>
+                        <td>
+                            {{matiere.libelle}}
+                        </td>
+                        <td>
+                            {{matiere.coefficient}}
+                        </td>
+                        <td>
+                            {{matiere.type}}
+                        </td>
+
+
+                        <td>
+                            <button pButton pRipple label="Classes" class="p-button-rounded p-button-success p-mr-2" (click)="editClasse(matiere)"></button>
+                           <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning" (click)="modifMat(matiere)"></button>
+                        </td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr >
+						<td  colspan="5" style="text-align: center;"> Matières non trouvées.</td>
+					</tr>
+				</ng-template>
+			</p-table>
+
+        </p-dialog>
+
+
+        <p-dialog [(visible)]="classeDialog" [style]="{width: '700px'}" header="Les classes dans lesquelles il enseigne " [modal]="true" styleClass="p-fluid">
+            <!--p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Supprimer" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteSelectedEnseignements()"
+                     [disabled]="!selectedClasses|| !selectedClasses.length"></button>
+
+                </ng-template>
+
+
+            </p-toolbar-->
+
+            <p-table #dt [value]="classess"  dataKey="id"
+
+            currentPageReportTemplate="Vue du {first} au {last} sur {totalRecords} classes" [showCurrentPageReport]="true"
+            styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+					 [filterDelay]="0" [globalFilterFields]="['libelle','niveau.libelle']">
+				<ng-template pTemplate="caption">
+					<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+						Liste des classes
+						<span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+						   placeholder="Recherche globale ..."/>
+                </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="width: 3rem">
+							<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+						</th>
+                        <th pSortableColumn="libelle">
+                            <div class="p-d-flex p-ai-center">
+
+                            Nom de la classe
+                            <p-sortIcon field="libelle"></p-sortIcon>
+                            <p-columnFilter type="text" field="libelle" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="niveau">
+                            <div class="p-d-flex p-ai-center">
+
+                               Niveau
+                            <p-sortIcon field="niveau"></p-sortIcon>
+                            <p-columnFilter type="text" field="niveau.libelle" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+
+
+
+
+						<th style="width: 8rem">Actions</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-classe>
+					<tr class="p-selectable-row">
+						<td>
+							<p-tableCheckbox [value]="classe"></p-tableCheckbox>
+						</td>
+                        <td>
+                            {{classe.libelle}}
+                        </td>
+                        <td>
+                            {{classe.niveau.libelle}}
+                        </td>
+
+
+
+                        <td>
+
+                           <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteEnseignement(classe)" ></button>
+                        </td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr >
+						<td  colspan="4" style="text-align: center;"> Classes non trouvées.</td>
+					</tr>
+				</ng-template>
+			</p-table>
+
+        </p-dialog>
+
+
+        <p-dialog [(visible)]="matDialog" [style]="{width: '600px'}" header="Les informations de la matière" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+
+
+                    <label >Matière: {{mat.matiereOld.libelle}}</label>
+
+
+               <br />
+               <br />
+
+                           <div  class="field">
+
+                            <label for="matiere">Matière</label>
+                            <p-dropdown [options]="matieres"
+                              placeholder="Choisir la matière" [showClear]="true"
+                                appendTo='body'
+
+                              [ngClass]="(matiere.invalid && (matiere.dirty || matiere.touched))&&
+                              matiere.errors?.required? 'ng-dirty ng-invalid alert':''"
+                              [(ngModel)]="mat.matiere" #matiere="ngModel"
+                              id="libelle"
+                              (ngModelChange)="verif()"
+                              required
+
+                             >
+                            </p-dropdown>
+
+                            <small class="ng-dirty ng-invalid invalidField" *ngIf="matiere.invalid && (matiere.dirty || matiere.touched)"
+                            >La matière est requise.</small>
+                          </div>
+
+
+
+
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-text" (click)="hideDialog1()"></button>
+                <button pButton pRipple label="Enregistrer" icon="pi pi-check" class="p-button-text" [disabled]="disable" (click)="updateMat()"></button>
+            </ng-template>
+
+
+        </p-dialog>
+
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+
+

@@ -1,0 +1,189 @@
+<div class="p-grid">
+
+    <div class="p-col-12">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Matière</h1>
+                    </div><!-- /.col -->
+                    <div class="p-col-12 col-sm-6">
+                        <div class="float-sm-right  p-text-right">
+                            <h5 class="breadcrumb-item >"><a href="">Accueil</a>  /Matière</h5>
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+
+
+    </div>
+
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+                    <button pButton pRipple label="Supprimer" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteSelectedMatieres()" [disabled]="!selectedMatieres|| !selectedMatieres.length"></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-splitButton label="{{'Exporter'|translate}}" icon="pi pi-upload" [model]="items" styleClass="p-button-help p-mr-2 p-mb-2"></p-splitButton>
+                </ng-template>
+            </p-toolbar>
+
+
+
+
+			<p-table #dt [value]="matieres" [(selection)]="selectedMatieres" dataKey="id"
+
+            currentPageReportTemplate="Vue du {first} au {last} sur {totalRecords} matières" [showCurrentPageReport]="true"
+            styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+					 [filterDelay]="0" [globalFilterFields]="['libelle','coefficient','type']">
+				<ng-template pTemplate="caption">
+					<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+						Liste des matières
+						<span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+						   placeholder="Recherche globale ..."/>
+                </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="width: 3rem">
+							<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+						</th>
+                        <th pSortableColumn="libelle">
+                            <div class="p-d-flex p-ai-center">
+
+                            Libellé
+                            <p-sortIcon field="libelle"></p-sortIcon>
+                            <p-columnFilter type="text" field="libelle" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="coefficient">
+                            <div class="p-d-flex p-ai-center">
+
+                           Coefficient
+                            <p-sortIcon field="coefficient"></p-sortIcon>
+                            <p-columnFilter type="text" field="coefficient" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="type">
+                            <div class="p-d-flex p-ai-center">
+
+                           Type
+                            <p-sortIcon field="type"></p-sortIcon>
+                            <p-columnFilter type="text" field="type" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+
+						<th style="width: 8rem">Actions</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-matiere>
+					<tr class="p-selectable-row">
+						<td>
+							<p-tableCheckbox [value]="matiere"></p-tableCheckbox>
+						</td>
+                        <td>
+                            {{matiere.libelle}}
+                        </td>
+                        <td>
+                            {{matiere.coefficient}}
+                        </td>
+                        <td>
+                            {{matiere.type}}
+                        </td>
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editMatiere(matiere)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteMatiere(matiere)"></button>
+                        </td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr >
+						<td  colspan="5" style="text-align: center;">Pas de matières trouvées.</td>
+					</tr>
+				</ng-template>
+			</p-table>
+        </div>
+
+        <p-dialog [(visible)]="matiereDialog"  [style]="{width: '450px'}" header="Les informations de la matière" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                    <div class="p-field">
+                        <label for="libelle">Libellé</label>
+                        <input type="text"
+                        #libelle="ngModel"
+                        [ngClass]="(libelle.invalid && (libelle.dirty || libelle.touched))&&
+                        libelle.errors?.required?.pattern? 'ng-dirty ng-invalid alert':''"
+                        pInputText
+                        id="libelle"
+                        [(ngModel)]="matiere.libelle" (ngModelChange)="verification()"
+                        required ng-pattern="[A-Za-z]" />
+
+
+
+                        <small class="ng-dirty ng-invalid invalidField" *ngIf="libelle.invalid && (libelle.dirty || libelle.touched )"
+                        >Le libellé est requis.</small>
+
+                    </div>
+
+                    <div class="p-field">
+                        <label for="coefficient">Coefficient</label>
+                        <p-inputNumber mode="decimal"  [min]="0" [max]="20"
+                        #coefficient="ngModel"
+                        [ngClass]="(coefficient.invalid && (coefficient.dirty || coefficient.touched))&&
+                        coefficient.errors?.required? 'ng-dirty ng-invalid alert':''"
+
+                        id="coefficient"
+                        [(ngModel)]="matiere.coefficient" (ngModelChange)="verification()"
+                        required  >
+                        </p-inputNumber>
+                        <small class="ng-dirty ng-invalid invalidField" *ngIf="coefficient.invalid && (coefficient.dirty || coefficient.touched)"
+                        >Le coefficient est requis.</small>
+                    </div>
+
+                    <div class="p-field">
+                        <label for="type">Type</label>
+                        <p-dropdown [options]="types"
+                        placeholder="Choisir le type" [showClear]="true"
+
+                      #type="ngModel"
+                      [ngClass]="(type.invalid && (type.dirty || type.touched))&&
+                      type.errors?.required? 'ng-dirty ng-invalid alert':''"
+                      appendTo='body'
+
+                      id="type"
+                      [(ngModel)]="matiere.type" (ngModelChange)="verification()"
+                      required >
+			        </p-dropdown>
+
+                        <small class="ng-dirty ng-invalid invalidField" *ngIf="type.invalid && (type.dirty || type.touched)"
+                        >Le type est requis.</small>
+                    </div>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Enregistrer" icon="pi pi-check" class="p-button-text" [disabled]="disable" (click)="saveMatiere()"></button>
+            </ng-template>
+        </p-dialog>
+
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+.printable-content {
+    margin: 16px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    background-color: #fff;
+}
+.printable-content .printable-area {
+    width: 420px;
+    height: 540px;
+}
+.printable-content .printable-area .header-table {
+    background-color: #18ac52;
+    margin: 2%;
+    width: 192%;
+    color: #fff;
+}
+.printable-content .printable-area .header-table th, .printable-content .printable-area .header-table td {
+    text-align: center;
+    padding: 5px;
+}
+.printable-content .printable-area .header-table .title {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.printable-content .printable-area h1, .printable-content .printable-area h3 {
+    margin-left: 10px;
+}
+.printable-content .printable-area h3 {
+    margin-top: 20px;
+}
+.printable-content .printable-area .subheader-table {
+    margin: 2%;
+    width: 188%;
+}
+.printable-content .printable-area .subheader-table td {
+    vertical-align: top;
+}
+.printable-content .printable-area .subheader-table td dt {
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 5px;
+}
+.printable-content .printable-area .subheader-table td dd {
+    margin: 0;
+}
+.printable-content .printable-area .subheader-table td:last-child {
+    text-align: right;
+}
+.printable-content .printable-area .subheader-table td:last-child dd {
+    font-size: 28px;
+    font-weight: bold;
+}
+.printable-content .printable-area .detail-table {
+    margin: 2%;
+    width: 188%;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}
+.printable-content .printable-area .detail-table th, .printable-content .printable-area .detail-table td h6{
+    padding: 5px;
+}
+.printable-content .printable-area .detail-table th {
+    border-bottom: 2px solid #ccc;
+}
+.printable-content .printable-area .detail-table td:nth-child(2), .printable-content .printable-area .detail-table td:nth-child(4) {
+    text-align: center;
+}
+.printable-content .printable-area .detail-table td:nth-child(3) {
+    text-align: center;
+}
+.printable-content .printable-area .footer-table {
+    margin: 2%;
+    width: 188%;
+}
+.printable-content .printable-area .footer-table td {
+    padding: 5px;
+    text-align: right;
+    font-weight: bold;
+}

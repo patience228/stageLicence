@@ -1,0 +1,139 @@
+
+ <p-toolbar styleClass="p-mb-6">
+    <ng-template pTemplate="left">
+        <button pButton label="Print" type="button" icon="pi pi-print" (click)="print()"
+        style="display:block;margin-bottom: 20px; margin-left: 6px;"></button>
+    </ng-template>
+
+    <ng-template pTemplate="right">
+        <button (click)="list()" pButton pRipple label="Retour" icon="pi pi-arrow-left" class="p-button-primary p-mr-2 p-mb-2" ></button>
+
+    </ng-template>
+
+</p-toolbar>
+
+
+                            <div class="p-grid">
+                                <div class="p-col">
+                                    <div class="card" >
+                                        <div id="invoice-content">
+                                            <div class="invoice">
+                                                <div class="invoice-header">
+                                                    <div class="invoice-company">
+                                                        <img id="invoice-logo" class="logo-image" src="assets/layout/images/ic_school.png" alt="" />
+                                                        <div class="company-name">GEVISCO School</div>
+                                                        <div>Email: gevisco@gmail.com</div>
+                                                        <div>Site web: www.gevisco.com</div>
+                                                    </div>
+                                                    <div *ngIf="preinscription">
+
+                                                        <div class="invoice-title"></div>
+                                                        <div class="invoice-details">
+
+                                                            <div class="invoice-label">B.P.F CFA </div>
+                                                            <div class="invoice-value">#{{preinscription.frais}}#</div>
+
+                                                            <div class="invoice-label">Année scolaire</div>
+                                                            <div class="invoice-value">{{ preinscription.annee.dateDebut | date:'yyyy' }}/{{ preinscription.annee.dateFin | date:'yyyy' }}</div>
+
+
+                                                            <div class="invoice-label">Reçu N<sup>0</sup> </div>
+                                                            <div class="invoice-value">{{a}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--div class="invoice-to">
+                                                    <div class="bill-to">BILL TO</div>
+                                                    <div class="invoice-to-info">
+                                                        <div>Claire Williams, 148 Hope Lane</div>
+                                                        <div>Palo Alto, CA 94304. </div>
+                                                    </div>
+                                                </div-->
+
+                                                     <div class="invoice-items">
+                                                    <table>
+
+                                                        <tr>
+                                                            <td><h6>Reçu de M.  </h6></td>
+                                                            <td>{{preinscription.eleve.nom}}  {{preinscription.eleve.prenom}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><h6>La somme de  </h6></td>
+                                                            <td>{{preinscription.frais}} francs CFA</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><h6>Pour  </h6></td>
+                                                            <td>Préinscription en {{preinscription.niveau.libelle}}</td>
+                                                        </tr>
+
+                                                    </table>
+
+
+                                                </div>
+
+                                                <!--div class="invoice-items">
+                                                    <table>
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Description</th>
+                                                            <th>Quantity</th>
+                                                            <th>Unit Price</th>
+                                                            <th>Line Total</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>Green T-Shirt</td>
+                                                            <td>1</td>
+                                                            <td>$49.00</td>
+                                                            <td>$49.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Game Controller</td>
+                                                            <td>2</td>
+                                                            <td>$99.00</td>
+                                                            <td>$198.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Mini Speakers</td>
+                                                            <td>1</td>
+                                                            <td>$85.00</td>
+                                                            <td>$85.00</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div-->
+                                                <div class="invoice-summary">
+                                                    <div class="invoice-notes">
+
+                                                    </div>
+                                                    <div>
+                                                        <div class="invoice-details">
+
+
+                                                            <div class="invoice-label">Lomé, le </div>
+                                                            <div class="invoice-value">{{ preinscription.datePreinscription | date:'dd/MM/yyyy' }}</div>
+
+                                                            <div class="invoice-label">Secrétaire: </div>
+                                                            <div class="invoice-value">$332.00</div>
+
+
+
+
+                                                            <!--div class="invoice-label">TOTAL</div>
+                                                            <div class="invoice-value">$332.00</div-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+

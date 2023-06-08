@@ -1,0 +1,183 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Année scolaire</h1>
+                    </div><!-- /.col -->
+                    <div class="p-col-12 col-sm-6">
+                        <div class="float-sm-right  p-text-right">
+                            <h5 class="breadcrumb-item >"><a href="">Accueil</a>  /Année scolaire</h5>
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+
+
+    </div>
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Ajouter" [disabled]="b" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+                    <button pButton pRipple label="Supprimer" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteSelectedAnnees()" [disabled]="!selectedAnnees || !selectedAnnees.length"></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Importer" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
+                    <button pButton pRipple label="Exporter" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+                </ng-template>
+            </p-toolbar>
+
+
+
+
+			<p-table #dt [value]="annees" [(selection)]="selectedAnnees" dataKey="id"
+
+            currentPageReportTemplate="Vue du {first} au {last} sur {totalRecords} années" [showCurrentPageReport]="true"
+            styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+					 [filterDelay]="0" [globalFilterFields]="['libelle','dateDebut','dateFin']">
+				<ng-template pTemplate="caption">
+					<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+						Liste des années
+						<span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+						   placeholder="Recherche globale ..."/>
+                </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="width: 3rem">
+							<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+						</th>
+                        <th pSortableColumn="libelle">
+                            <div class="p-d-flex p-ai-center">
+
+                            Libellé
+                            <p-sortIcon field="libelle"></p-sortIcon>
+                            <p-columnFilter type="text" field="libelle" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                        <th pSortableColumn="dateDebut">
+                            <div class="p-d-flex  p-ai-center">
+                            Date de début
+                            <p-sortIcon field="dateDebut"></p-sortIcon>
+                            <p-columnFilter type="date" field="dateDebut" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                        <th pSortableColumn="dateFin">
+                            <div class="p-d-flex  p-ai-center">
+                                Date de fin
+                            <p-sortIcon field="dateFin"></p-sortIcon>
+                            <p-columnFilter type="date" field="dateFin" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+						<th style="width: 8rem">Actions</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-annee>
+					<tr class="p-selectable-row">
+						<td>
+							<p-tableCheckbox [value]="annee"></p-tableCheckbox>
+						</td>
+                        <td>
+                            {{annee.libelle}}
+                        </td>
+                        <td>
+                            {{annee.dateDebut | date:'dd/MM/yyyy'}}
+                        </td>
+                        <td>{{annee.dateFin | date:'dd/MM/yyyy'}}</td>
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editAnnee(annee)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteAnnee(annee)"></button>
+                        </td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr >
+						<td  colspan="5" style="text-align: center;">Pas d'années trouvées.</td>
+					</tr>
+				</ng-template>
+			</p-table>
+        </div>
+
+        <p-dialog [(visible)]="anneeDialog" [style]="{width: '450px'}" header="Les informations de l'année scolaire" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                    <div class="p-field">
+
+                        <label for="libelle">Libellé</label>
+
+                        <input type="text"
+                        #libelle="ngModel"
+                        [ngClass]="(libelle.invalid && (libelle.dirty || libelle.touched))&&
+                        libelle.errors?.required? 'ng-dirty ng-invalid alert':''"
+                        pInputText
+                        id="libelle"
+                        [(ngModel)]="annee.libelle" (ngModelChange)="verification()"
+                        required  />
+                        <small class="ng-dirty ng-invalid invalidField" *ngIf="libelle.invalid && (libelle.dirty || libelle.touched)"
+                        >Le libellé est requis.</small>
+                    </div>
+
+
+
+                    <div class="p-field">
+
+                        <label for="dateDebut">Date de début</label>
+
+
+                        <p-calendar
+                        #dateDebut="ngModel"
+                         [ngClass]="(dateDebut.invalid && (dateDebut.dirty || dateDebut.touched))&&
+                         dateDebut.errors?.required? 'ng-dirty ng-invalid ':''"
+                         [showIcon]="true"
+                         appendTo='body'
+                          inputId="icon"
+                         id="dateDebut"
+                         [(ngModel)]="annee.dateDebut"
+                          (ngModelChange)="verification()"
+                         required  showButtonBar="true"
+                         ></p-calendar>
+
+                         <small class="ng-dirty ng-invalid invalidField" *ngIf="dateDebut.invalid && (dateDebut.dirty || dateDebut.touched)">La date de début est requise.</small>
+
+                    </div>
+
+                    <div class="p-field">
+                        <label for="dateFin">Date de fin</label>
+
+                        <p-calendar
+                        #dateFin="ngModel"
+                        appendTo='body'
+                        [ngClass]="(dateFin.invalid && (dateFin.dirty || dateFin.touched))&&
+                        dateFin.errors?.required? 'ng-dirty ng-invalid ':''"
+                        [showIcon]="true"
+                        inputId="icon" id="dateFin"
+                         [(ngModel)]="annee.dateFin"  (ngModelChange)="verification()"
+                         required   showButtonBar="true"></p-calendar>
+                        <small class="ng-dirty ng-invalid invalidField" *ngIf="dateFin.invalid && (dateFin.dirty || dateFin.touched)">La date de fin est requise.</small>
+
+                    </div>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Enregistrer" icon="pi pi-check" class="p-button-text" [disabled]="disable" (click)="saveAnnee()"></button>
+            </ng-template>
+        </p-dialog>
+
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
